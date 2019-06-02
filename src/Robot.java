@@ -54,7 +54,5 @@ public class Robot {
                 System.out.println("step down");
                 break;
         }
-
     }
-
 }

@@ -15,7 +15,7 @@ public final class ComplexNumber {
         return im;
     }
 
-    @Override
+            @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -33,8 +33,5 @@ public final class ComplexNumber {
         temp = Double.hashCode(im);
         result = 31 * temp * (temp - 31) + result;
         return result;
-
-
     }
-    
 }

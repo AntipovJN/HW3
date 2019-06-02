@@ -2,7 +2,7 @@ public class AsciiCharSequence implements CharSequence {
     private byte[] charArray;
 
     public AsciiCharSequence(byte[] charArray) {
-            this.charArray = charArray.clone();
+        this.charArray = charArray.clone();
     }
 
     @Override
@@ -17,20 +17,25 @@ public class AsciiCharSequence implements CharSequence {
 
     @Override
     public CharSequence subSequence(int start, int end) {
-        byte[] charSequence = new byte[end - start];
-        for(int i = 0; i < end - start; i++, start++) {
-            charSequence[i] = this.charArray[start];
+        if (end > start) {
+            int j = start;
+            byte[] charSequence = new byte[end - start];
+            for (int i = 0; i < end - start; i++, j++) {
+                charSequence[i] = this.charArray[j];
+            }
+            return new AsciiCharSequence(charSequence);
+        } else {
+            System.out.println("invalid indexes");
+            return new AsciiCharSequence(this.charArray);
         }
-        return  new AsciiCharSequence(charSequence);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (byte b: charArray) {
+        for (byte b : charArray) {
             sb.append((char) b);
         }
         return sb.toString();
-
-        }
+    }
 }
